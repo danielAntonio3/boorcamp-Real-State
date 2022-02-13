@@ -1,23 +1,25 @@
 const { ApolloServer } = require('apollo-server-express');
 
-const { typeDefs, resolvers, context } = require('./../libs/apollo');
+// const { typeDefs, resolvers, context } = require('./../libs/apollo');
+
+const { resolvers, typeDefs } = require('./../libs/resolvers');
 
 // todo: Hacer la configuración
 
-function apollo(app) {
+function apollo(app, path) {
   console.log('Apollo Server');
   const server = new ApolloServer({
     typeDefs,
     resolvers,
-    context,
+    // context,
   });
 
   server.start().then((res) => {
     server.applyMiddleware({
       app,
-      path: '/apollo',
+      path,
       cors: {
-        credentials: true,
+        // credentials: true,
         origin: [
           'https://studio.apollographql.com',
           'http://localhost:4000',

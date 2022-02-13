@@ -1,12 +1,20 @@
 const express = require('express');
 const cors = require('cors');
 const cookie = require('cookie-parser');
+
 const { connectDB } = require('./../database/database');
 const { port } = require('./../config/configEnv');
+const apollo = require('./../routers/apollo');
 
 class Server {
   constructor() {
     this.app = express();
+
+    this.paths = {
+      user: '/api/user',
+      apollo: '/apollo',
+    };
+
     this.startDB();
     this.middleware();
     this.routes();
@@ -31,9 +39,8 @@ class Server {
   }
 
   routes() {
-    this.app.get('/', (req, res) => {
-      return res.send('Hello World!!!');
-    });
+    this.app.use(this.paths.user, require('./../routers/user.route'));
+    apollo(this.app, this.paths.apollo);
   }
 
   listen() {
