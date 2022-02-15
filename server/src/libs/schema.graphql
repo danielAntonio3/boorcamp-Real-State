@@ -1,18 +1,41 @@
-type Query {
-  users: String
+enum Roles {
+  "ADMIN"
+  ADMIN
+  "ASESOR"
+  ASESOR
+  "ARRENDADOR"
+  ARRENDADOR
+  "ARRENDATARIO"
+  ARRENDATARIO
 }
+
+type Query {
+  getFullUser: [User]
+  getUser(_id: ID, email: String): User
+}
+
 type User {
+  _id: String
   name: String
   email: String
   role: String
-  id: String
 }
 
-input UserInput {
+input CreateUserInput {
+  name: String!
+  email: String!
+  password: String!
+  role: Roles
+}
+
+input UpdateUserInput {
   name: String
-  role: String
+  role: Roles
+  password: String
 }
 
 type Mutation {
-  updateUser(id: String!, user: UserInput): User
+  createUser(user: CreateUserInput): User
+  updateUser(_id: ID!, user: UpdateUserInput): User
+  deleteUser(_id: ID!): String
 }

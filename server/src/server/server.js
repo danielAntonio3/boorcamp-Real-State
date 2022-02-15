@@ -11,8 +11,9 @@ class Server {
     this.app = express();
 
     this.paths = {
-      user: '/api/user',
       apollo: '/apollo',
+      auth: '/api/auth',
+      user: '/api/user',
     };
 
     this.startDB();
@@ -39,8 +40,9 @@ class Server {
   }
 
   routes() {
-    this.app.use(this.paths.user, require('./../routers/user.route'));
     apollo(this.app, this.paths.apollo);
+    this.app.use(this.paths.user, require('./../routers/user.route'));
+    this.app.use(this.paths.auth, require('./../routers/auth.route'));
   }
 
   listen() {
