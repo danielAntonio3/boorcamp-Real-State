@@ -1,15 +1,13 @@
 const { ApolloError } = require('apollo-server-express');
 const bcryptjs = require('bcryptjs');
 
-const Users = require('./../../services/user.service');
-// const errorHandler = require('./errorHandler');
-const { existsEmail } = require('./../../helpers');
+const Users = require('../../services/user.service');
+const { existsEmail } = require('../../helpers');
 
 const UserServices = new Users();
 
 module.exports = {
   createUser: async (parent, args, context, info) => {
-    // TODO: cifrar contraseña
     const exist = await existsEmail(args.user.email);
     if (exist) {
       throw new ApolloError(exist);

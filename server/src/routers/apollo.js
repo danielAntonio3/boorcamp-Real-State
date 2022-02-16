@@ -2,7 +2,7 @@ const { ApolloServer } = require('apollo-server-express');
 
 // const { typeDefs, resolvers, context } = require('./../libs/apollo');
 
-const { resolvers, typeDefs } = require('./../libs/resolvers/resolvers');
+const { resolvers, typeDefs } = require('../libs/resolver/resolvers');
 
 // todo: Hacer la configuración
 
