@@ -1,0 +1,35 @@
+type Query {
+  hello: String
+}
+
+type house {
+  country: String!
+  state: String!
+  city: String!
+  street: String!
+  number: Int!
+  zipCode: Int!
+  price: Int!
+  rooms: Int!
+  bathrooms: Int!
+  animals: Boolean!
+  rating: Float
+}
+
+input houseInput {
+  country: String!
+  state: String!
+  city: String!
+  street: String!
+  number: Int!
+  zipCode: Int!
+  price: Int!
+  rooms: Int!
+  bathrooms: Int!
+  animals: Boolean!
+  rating: Float
+}
+
+type Mutation {
+  createHouse(house: houseInput): house
+}

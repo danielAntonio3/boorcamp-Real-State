@@ -1,9 +1,9 @@
 const { ApolloError } = require('apollo-server-express');
 const bcryptjs = require('bcryptjs');
 
-const Users = require('./../services/user.service');
+const Users = require('./../../services/user.service');
 // const errorHandler = require('./errorHandler');
-const { existsEmail } = require('./../helpers');
+const { existsEmail } = require('./../../helpers');
 
 const UserServices = new Users();
 
