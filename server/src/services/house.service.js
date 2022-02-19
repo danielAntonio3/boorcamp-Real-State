@@ -5,8 +5,13 @@ class House {
     return await HouseModel.findOne(data).exec();
   }
 
-  async findAll() {
-    return await HouseModel.find().exec();
+  async findAll(data) {
+    const { limit, skip, payload } = data;
+    if (payload) {
+      return await HouseModel.find(payload).skip(skip).limit(limit).exec();
+    } else {
+      return await HouseModel.find().skip(skip).limit(limit).exec();
+    }
   }
 
   async createHouse(data) {

@@ -7,7 +7,11 @@ const getHouse = async (parent, args, context, info) => {
 };
 
 const getFullHouses = async (parent, args, context, info) => {
-  return await houseServices.findAll();
+  return await houseServices.findAll(args);
+};
+
+const filterHouse = async (parent, args, context, info) => {
+  return await houseServices.findAll(args);
 };
 
 const createHouse = async (parent, args, context, info) => {
@@ -30,6 +34,7 @@ const deleteHouse = async (parent, args, context, info) => {
 module.exports = {
   getHouse,
   getFullHouses,
+  filterHouse,
   createHouse,
   updateHouse,
   deleteHouse,

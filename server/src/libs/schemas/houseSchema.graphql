@@ -1,6 +1,7 @@
 type Query {
   getHouse(_id: ID!): House
-  getFullHouse: [House]
+  getFullHouse(limit: Int!, skip: Int!): [House]
+  filterHouse(limit: Int!, skip: Int!, payload: UpdateHouseInput): [House]
 }
 
 type Service {
