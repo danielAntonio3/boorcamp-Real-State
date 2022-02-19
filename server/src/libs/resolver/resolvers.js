@@ -11,8 +11,10 @@ const houseSchema = readFileSync(
   join(__dirname, '../schemas/houseSchema.graphql'),
   'utf-8'
 );
-const userQueries = require('../queries/UserQueries');
+const userQueries = require('../queries/userQueries');
+const houseQueries = require('../queries/houseQueries');
 const userMutations = require('../mutations/userMutation');
+const houseMutations = require('../mutations/houseMutation');
 
 const typeDefs = gql`
   ${userSchema}
@@ -20,8 +22,8 @@ const typeDefs = gql`
 `;
 
 const resolvers = {
-  Query: { ...userQueries },
-  Mutation: { ...userMutations },
+  Query: { ...userQueries, ...houseQueries },
+  Mutation: { ...userMutations, ...houseMutations },
 };
 
 module.exports = { resolvers, typeDefs };

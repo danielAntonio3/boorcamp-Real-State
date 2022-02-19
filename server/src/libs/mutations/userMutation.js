@@ -1,30 +1,15 @@
-const { ApolloError } = require('apollo-server-express');
-const bcryptjs = require('bcryptjs');
-
-const Users = require('../../services/user.service');
-const { existsEmail } = require('../../helpers');
-
-const UserServices = new Users();
+const { createUser, updateUser, deleteUser } = require('./../../controllers');
 
 module.exports = {
-  createUser: async (parent, args, context, info) => {
-    const exist = await existsEmail(args.user.email);
-    if (exist) {
-      throw new ApolloError(exist);
-    }
-    const salt = bcryptjs.genSaltSync();
-    args.user.password = bcryptjs.hashSync(args.user.password, salt);
-
-    const { user } = await UserServices.createUser(args.user);
-    return user;
+  createUser: (parent, args, context, info) => {
+    return createUser('', args, '', '');
   },
 
-  updateUser: async (parent, args, context, info) => {
-    return await UserServices.updateUser(args);
+  updateUser: (parent, args, context, info) => {
+    return updateUser('', args, '', '');
   },
 
-  deleteUser: (parent, args, context, info) => {
-    UserServices.deleteUser(args._id);
-    return 'User deleted';
+  deleteUser: async (parent, args, context, info) => {
+    return await deleteUser('', args, '', '');
   },
 };

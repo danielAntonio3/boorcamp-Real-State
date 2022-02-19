@@ -46,6 +46,9 @@ const houseSchema = new Schema({
   },
   rating: {
     type: Number,
+  },
+  img: {
+    type: String,
     required: true,
   },
   services: [serviceSchema],

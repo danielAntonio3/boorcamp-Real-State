@@ -1,8 +1,46 @@
 type Query {
-  hello: String
+  getHouse(_id: ID!): House
+  getFullHouse: [House]
 }
 
-type house {
+type Service {
+  kitchen: Boolean
+  parking: Boolean
+  patio: Boolean
+  wifi: Boolean
+  tv: Boolean
+  airConditioner: Boolean
+  smockingArea: Boolean
+}
+
+type House {
+  _id: String
+  country: String
+  state: String
+  city: String
+  street: String
+  number: Int
+  zipCode: Int
+  price: Int
+  rooms: Int
+  bathrooms: Int
+  animals: Boolean
+  rating: Float
+  img: String
+  services: [Service]
+}
+
+input ServiceInput {
+  kitchen: Boolean!
+  parking: Boolean!
+  patio: Boolean!
+  wifi: Boolean!
+  tv: Boolean!
+  airConditioner: Boolean!
+  smockingArea: Boolean!
+}
+
+input HouseInput {
   country: String!
   state: String!
   city: String!
@@ -14,22 +52,38 @@ type house {
   bathrooms: Int!
   animals: Boolean!
   rating: Float
+  img: String!
+  services: [ServiceInput!]!
 }
 
-input houseInput {
-  country: String!
-  state: String!
-  city: String!
-  street: String!
-  number: Int!
-  zipCode: Int!
-  price: Int!
-  rooms: Int!
-  bathrooms: Int!
-  animals: Boolean!
+input UpdateServiceInput {
+  kitchen: Boolean
+  parking: Boolean
+  patio: Boolean
+  wifi: Boolean
+  tv: Boolean
+  airConditioner: Boolean
+  smockingArea: Boolean
+}
+
+input UpdateHouseInput {
+  country: String
+  state: String
+  city: String
+  street: String
+  number: Int
+  zipCode: Int
+  price: Int
+  rooms: Int
+  bathrooms: Int
+  animals: Boolean
   rating: Float
+  img: String
+  services: [UpdateServiceInput]
 }
 
 type Mutation {
-  createHouse(house: houseInput): house
+  createHouse(house: HouseInput): House
+  updateHouse(_id: ID!, house: UpdateHouseInput): House
+  deleteHouse(_id: ID!): String
 }
