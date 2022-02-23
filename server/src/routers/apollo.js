@@ -1,8 +1,6 @@
 const { ApolloServer } = require('apollo-server-express');
-
-// const { typeDefs, resolvers, context } = require('./../libs/apollo');
-
 const { resolvers, typeDefs } = require('../libs/resolver/resolvers');
+const { context } = require('./../libs/context/authContext');
 
 // todo: Hacer la configuración
 
@@ -11,7 +9,7 @@ function apollo(app, path) {
   const server = new ApolloServer({
     typeDefs,
     resolvers,
-    // context,
+    context,
   });
 
   server.start().then((res) => {

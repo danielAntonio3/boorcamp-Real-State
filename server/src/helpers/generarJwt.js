@@ -1,5 +1,8 @@
 const jwt = require('jsonwebtoken');
 const { jwtSecret } = require('./../config/configEnv');
+const User = require('./../services/user.service');
+
+const UserServices = new User();
 
 const generateJwt = (_id = '') => {
   return new Promise((resolve, reject) => {
@@ -22,25 +25,19 @@ const generateJwt = (_id = '') => {
   });
 };
 
-/* const comprobarJWT = async (token = '') => {
+const comprobarJWT = async (token = '') => {
   try {
     if (token.length < 10) {
       return null;
     }
-    const { uid } = jwt.verify(token, jwtSecret);
-
-    if (!uid) {
+    const { _id } = jwt.verify(token, jwtSecret);
+    if (!_id) {
       return null;
     }
 
-    const usuario = await userSchema.findOne({ _id: uid });
-
+    const usuario = await UserServices.find({ _id });
     if (usuario) {
-      if (usuario.status) {
-        return usuario;
-      } else {
-        return null;
-      }
+      return usuario;
     } else {
       return null;
     }
@@ -48,6 +45,6 @@ const generateJwt = (_id = '') => {
     console.log(error);
     return null;
   }
-}; */
+};
 
-module.exports = { generateJwt /* comprobarJWT */ };
+module.exports = { generateJwt, comprobarJWT };

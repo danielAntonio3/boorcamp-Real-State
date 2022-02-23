@@ -2,19 +2,23 @@ const { ApolloError } = require('apollo-server-express');
 const bcryptjs = require('bcryptjs');
 
 const { existsEmail } = require('./../helpers');
+const { validateRole } = require('./../helpers');
 const User = require('./../services/user.service');
 
 const userServices = new User();
 
 const getUser = (parent, args, context, info) => {
+  validateRole(context);
   return userServices.find(args);
 };
 
 const getFullUser = (parent, args, context, info) => {
+  validateRole(context);
   return userServices.findAll();
 };
 
 const createUser = async (parent, args, context, info) => {
+  // validateRole(context);
   const exist = await existsEmail(args.user.email);
   if (exist) {
     throw new ApolloError(exist);
@@ -27,9 +31,12 @@ const createUser = async (parent, args, context, info) => {
 };
 
 const updateUser = async (parent, args, context, info) => {
+  validateRole(context);
   return await userServices.updateUser(args);
 };
+
 const deleteUser = async (parent, args, context, info) => {
+  validateRole(context);
   const user = await userServices.deleteUser(args._id);
   if (!user) {
     return 'User not found';

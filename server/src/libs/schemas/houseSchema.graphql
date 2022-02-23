@@ -1,5 +1,6 @@
 type Query {
   getHouse(_id: ID!): House
+  getHouseUser(limit: Int!, skip: Int!): [House]
   getFullHouse(limit: Int!, skip: Int!): [House]
   filterHouse(limit: Int!, skip: Int!, payload: UpdateHouseInput): [House]
 }
@@ -28,6 +29,7 @@ type House {
   animals: Boolean
   rating: Float
   img: String
+  idUser: String
   services: [Service]
 }
 

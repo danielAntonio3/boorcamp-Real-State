@@ -51,6 +51,11 @@ const houseSchema = new Schema({
     type: String,
     required: true,
   },
+  idUser: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    required: true,
+  },
   services: [serviceSchema],
 });
 
