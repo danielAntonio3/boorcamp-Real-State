@@ -35,7 +35,7 @@ const login = async (req = request, res = response) => {
     .cookie('token', token, {
       httpOnly: true,
       sameSite: 'none',
-      // secure: true,
+      secure: true,
       expires,
     })
     .json({ name: user.name, email: user.email, role: user.role });

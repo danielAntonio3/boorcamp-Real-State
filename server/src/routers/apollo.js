@@ -17,12 +17,8 @@ function apollo(app, path) {
       app,
       path,
       cors: {
-        // credentials: true,
-        origin: [
-          'https://studio.apollographql.com',
-          'http://localhost:4000',
-          'http://localhost:3000',
-        ],
+        credentials: true,
+        origin: ['https://studio.apollographql.com', 'http://localhost:3000'],
       },
     });
   });

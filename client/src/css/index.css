@@ -11,20 +11,22 @@ body {
     to top,
     #021b79,
     #0575e6
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  ); /*W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-repeat: no-repeat;
+  min-height: 100vh;
 }
 
 .login {
   width: 100%;
-  height: 560px;
-  vh: 100%;
+  height: 572px;
   display: flex;
   justify-content: center;
   align-items: center;
+  /* background: #fff; */
 }
 
 .login-container {
-  width: 40%;
+  width: 30%;
   height: 400px;
   background-color: rgba(255, 255, 255, 0.2);
   display: flex;
@@ -39,9 +41,10 @@ body {
 }
 
 .login-container-title {
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: 700;
   color: #fff;
+  margin: 20px;
 }
 
 .login-container-input {
@@ -66,7 +69,7 @@ body {
   padding-left: 10px;
   font-size: 15px;
   font-weight: 700;
-  color: fff;
+  color: #fff;
 }
 
 .input-login:focus {
@@ -88,7 +91,7 @@ body {
   padding-left: 10px;
   font-size: 15px;
   font-weight: 700;
-  color: fff;
+  color: #fff;
 }
 
 .input-password:focus {
