@@ -1,6 +1,6 @@
-import React, { useRef } from 'react';
-import { useToasts } from 'react-toast-notifications';
-import axios from 'axios';
+import React, { useRef } from "react";
+import { useToasts } from "react-toast-notifications";
+import axios from "axios";
 
 // import { userContext } from './../context/UseContext';
 
@@ -16,9 +16,9 @@ export default function Login() {
     event.preventDefault();
     const email = emailRef.current.value.trim();
     const password = passwordRef.current.value.trim();
-    if (email === '' || password === '') {
-      addToast('Por favor rellena todos los campos', {
-        appearance: 'error',
+    if (email === "" || password === "") {
+      addToast("Por favor rellena todos los campos", {
+        appearance: "error",
         autoDismiss: true,
       });
       return;
@@ -27,22 +27,17 @@ export default function Login() {
     axios
       .post(
         `http://localhost:4000/api/auth`,
-        {
-          email,
-          password,
-        },
-        {
-          withCredentials: true,
-        }
+        { email, password },
+        { withCredentials: true }
       )
       .then((res) => {
         // console.log(res.data);
-        localStorage.setItem('user', res.data.name);
-        window.location.replace('http://localhost:3000/');
+        localStorage.setItem("user", res.data.name);
+        window.location.replace("http://localhost:3000/");
       })
       .catch((err) => {
         addToast(err.response.data.message, {
-          appearance: 'error',
+          appearance: "error",
           autoDismiss: true,
         });
       });
