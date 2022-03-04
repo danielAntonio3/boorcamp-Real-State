@@ -15,9 +15,9 @@ export default function House({ house }) {
         <p>
           <FaMoneyBill /> {house.price} / noche
         </p>
-        {/* <p>
+        <p>
           {house.bathrooms} - habitación - {house.rooms} - baño
-        </p> */}
+        </p>
       </div>
     </article>
   );

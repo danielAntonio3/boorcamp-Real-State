@@ -1,5 +1,5 @@
 import React, { useState, createContext, useEffect } from "react";
-import { useQuery, gql, useMutation } from "@apollo/client";
+import { useQuery, gql} from "@apollo/client";
 
 export const dashboardContext = createContext();
 
@@ -11,36 +11,6 @@ const GET_MY_HOUSE = gql`
       state
       city
       street
-      number
-      zipCode
-      price
-      rooms
-      bathrooms
-      animals
-      rating
-      img
-      idUser
-      services {
-        kitchen
-        parking
-        patio
-        wifi
-        tv
-        airConditioner
-        smockingArea
-      }
-    }
-  }
-`;
-
-const ADD_HOUSE = gql`
-  mutation Mutation($house: HouseInput) {
-    createHouse(house: $house) {
-      _id
-      country
-      state
-      street
-      city
       number
       zipCode
       price
@@ -76,32 +46,12 @@ export default function DashboardContext({ children }) {
     }
   }, [data]);
 
-  const [
-    mutate,
-    { loading: mutationLoading, data: mutationData, error: mutationError },
-  ] = useMutation(ADD_HOUSE);
-
-  const addHouse = (house) => {
-    mutate({
-      variables: {
-        house,
-      },
-    });
-
-    if (mutationLoading) return "Submitting...";
-    if (mutationError) return `Submission error! ${error.message}`;
-    console.log(mutationData);
-    // dispatch({
-    //   type: 'addHouse',
-    //   payload: newHouse,
-    // });
-  };
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
 
   return (
-    <dashboardContext.Provider value={{ myHouse, setMyHouse, addHouse }}>
+    <dashboardContext.Provider value={{ myHouse, setMyHouse}}>
       {children}
     </dashboardContext.Provider>
   );

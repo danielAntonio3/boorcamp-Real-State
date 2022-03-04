@@ -21,7 +21,7 @@ export default function NavBar() {
             <Link to="/">
               <button >Home</button>
             </Link>
-            <Link to={"/dashboard"}><button>mis casas</button></Link>
+            <Link to={"/dashboard"}><button>Mis casas</button></Link>
             <Link to={"/add-house"}><button>Agregar casa</button></Link>
             <Link to={"/search-house"}><button>Buscar</button></Link>
             <Link to="/">
