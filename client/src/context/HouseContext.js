@@ -1,12 +1,9 @@
-import React, { useState, createContext, useEffect } from "react";
-import { useQuery, gql } from "@apollo/client";
+import React, { useState, createContext, useEffect} from "react";
+import { useQuery, gql} from "@apollo/client";
 
 export const houseContext = createContext();
 
-export default function HouseContext({ children }) {
-  const [house, setHouse] = useState(null);
-
-  const GET_HOUSE = gql`
+const GET_HOUSE = gql`
     query House($limit: Int!, $skip: Int!) {
       getFullHouse(limit: $limit, skip: $skip) {
         _id
@@ -35,8 +32,12 @@ export default function HouseContext({ children }) {
     }
   `;
 
+
+export default function HouseContext({ children }) {
+  const [house, setHouse] = useState(null);
+
   const { loading, data, error } = useQuery(GET_HOUSE, {
-    variables: { limit: 5, skip: 0 },
+    variables: { limit: 10, skip: 0 },
   });
 
   useEffect(() => {
@@ -45,10 +46,13 @@ export default function HouseContext({ children }) {
     }
   }, [data]);
 
-  if(loading) return <p>Loading...</p>;
+
+  if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
+
+
   return (
-    <houseContext.Provider value={{ house, setHouse }}>
+    <houseContext.Provider value={{ house, setHouse}}>
       {children}
     </houseContext.Provider>
   );

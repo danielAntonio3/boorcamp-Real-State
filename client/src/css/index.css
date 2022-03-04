@@ -137,14 +137,50 @@ body {
 .nav {
   width: 100%;
   height: 60px;
-  background: lightblue;
-  position: fixed;
+  /* position: fixed; */
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
+.nav-login {
+  width: 100%;
+  height: 60px;
+  background: #000;
+}
+
+.nav-login-container {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  background: #000;
+}
+
+.nav-login-container a button {
+  height: 30px;
+  background: #fff;
+  margin: 20px;
+
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border: 1px solid #232323;
+  box-sizing: border-box;
+  font-size: 15px;
+  font-weight: 700;
+  color: #232323;
+  cursor: pointer;
+}
+.nav-login-container a button:hover {
+  transform: translateY(-5px);
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+}
 /* HOME */
 
 .page {
@@ -213,7 +249,7 @@ body {
 
 /* Add house */
 
-.addHouse{
+.addHouse {
   width: 100%;
   height: 800px;
   display: flex;
@@ -221,7 +257,7 @@ body {
   align-items: center;
 }
 
-.addHouse-container{
+.addHouse-container {
   width: 90%;
   height: 500px;
   background-color: rgba(255, 255, 255, 0.2);
@@ -236,14 +272,14 @@ body {
   -o-border-radius: 20px;
 }
 
-.addHouse-container-title{
+.addHouse-container-title {
   font-size: 1rem;
   font-weight: 700;
   color: #fff;
   margin: 5px;
 }
 
-.addHouse-container-input{
+.addHouse-container-input {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -252,7 +288,7 @@ body {
   /* background: #fff; */
 }
 
-.input{
+.input {
   width: 100%;
   height: 30px;
   background: #232323;
@@ -275,7 +311,7 @@ body {
   font-weight: 700;
 }
 
-.addHouse-container-button{
+.addHouse-container-button {
   width: 70%;
   height: 40px;
   margin: 20px;
@@ -304,11 +340,11 @@ body {
   transition-duration: 0.5s;
 }
 
-.addHouse-service{
+.addHouse-service {
   width: 95%;
 }
 
-.addHouse-service-radio{
+.addHouse-service-radio {
   display: inline-block;
   justify-content: center;
   flex-direction: column;
@@ -318,15 +354,81 @@ body {
   padding: 5px;
 }
 
-.addHouse-service-radio > span{
+.addHouse-service-radio > span {
   font-weight: 700;
   color: #fff;
 }
 
-.addHouse-service-radio-input{
+.addHouse-service-radio-input {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 10px;
   color: #fff;
+}
+
+.nav-search {
+  width: 100%;
+  height: 50px;
+  background: #000;
+}
+
+.nav-search-container {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin: 1px;
+  background: #000;
+}
+
+.nav-search-input {
+  width: 50%;
+  height: 30px;
+  background: #232323;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border: 1px solid #232323;
+  padding-left: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  margin: 5px;
+}
+
+.nav-search-input:focus {
+  outline: 3px ridge aqua;
+  color: aqua;
+  font-weight: 700;
+}
+
+.nav-search-button {
+  width: 50%;
+  height: 40px;
+  background: #232323;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border: 1px solid #232323;
+  box-sizing: border-box;
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  margin-left: 50px;
+}
+
+.nav-search-button:hover {
+  background: #fff;
+  color: #232323;
+  transform: translateX(0) translateY(0) rotate(0) skewX(0) skewY(0)
+    scaleX(1.05) scaleY(1.05);
+  transition-duration: 0.5s;
 }

@@ -5,6 +5,7 @@ import Login from './pages/Login';
 import NotFound from './pages/NotFound';
 import Dashboard from './pages/Dashboard';
 import AddHouse from './pages/AddHouse';
+import SearchHouse from './pages/SearchHouse';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/add-house" element={<AddHouse />} />
+        <Route path="/search-house" element={<SearchHouse />} />
       </Routes>
     </BrowserRouter>
   );
